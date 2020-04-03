@@ -10,21 +10,30 @@ from .document import SubDocument
 class Token(SubDocument):
     # Attributes
     _from: str
-    _createdAt: datetime
-    _tags: List[str]
+    _created_at: datetime
+    tags: List[str]
 
     # Methods
     def __init__(self, data: dict):
         super(Token, self).__init__(data)
 
         self._from = data['from']
-        self._createdAt = json2date(data['createdAt'])
-        self._tags = data['tags']
+        self._created_at = json2date(data['createdAt'])
+        self.tags = data['tags']
+
+    # Properties
+    @property
+    def from_(self) -> str:
+        return self._from
+
+    @property
+    def created_at(self) -> datetime:
+        return self._created_at
 
 
 class TokenHolder:
     # Attributes
-    _lastConnexion: datetime = None
+    _last_connexion: datetime = None
     _tokens: List[Token]
 
     # Methods
@@ -32,4 +41,9 @@ class TokenHolder:
         self._tokens = [Token(tk) for tk in data['tokens']]
 
         if 'lastConnexion' in data:
-            self._lastConnexion = json2date(data['lastConnexion'])
+            self._last_connexion = json2date(data['lastConnexion'])
+
+    # Properties
+    @property
+    def last_connexion(self) -> datetime:
+        return self._last_connexion
