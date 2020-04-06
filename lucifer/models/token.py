@@ -31,13 +31,13 @@ class Token(SubDocument):
         return self._created_at
 
 
-class TokenHolder:
+class TokensHolder:
     # Attributes
     _last_connexion: datetime = None
     _tokens: List[Token]
 
     # Methods
-    def __init__(self, data: dict):
+    def _init_tokens(self, data: dict):
         self._tokens = [Token(tk) for tk in data['tokens']]
 
         if 'lastConnexion' in data:

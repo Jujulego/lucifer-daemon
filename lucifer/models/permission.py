@@ -30,12 +30,12 @@ class Permission(SubDocument):
         self.level = PLvl(data['level'])
 
 
-class PermissionHolder:
+class PermissionsHolder:
     # Attributes
     admin: bool
     permissions: List[Permission]
 
     # Methods
-    def __init__(self, data: dict):
+    def _init_permissions(self, data: dict):
         self.admin = data['admin']
         self.permissions = [Permission(perm) for perm in data['permissions']]
