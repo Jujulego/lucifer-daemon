@@ -7,9 +7,10 @@ with open('requirements.txt') as f:
 # Setup package
 setup(
     name="lucifer",
-    version="0.1",
+    version="0.1.0",
     packages=[
         "lucifer",
+        "lucifer.base",
         "lucifer.models",
         "lucifer.utils"
     ],
