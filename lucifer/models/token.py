@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 from lucifer.utils.date import json2date
 
@@ -8,18 +8,14 @@ from .document import SubDocument
 
 # Classes
 class Token(SubDocument):
-    # Attributes
-    _from: str
-    _created_at: datetime
-    tags: List[str]
-
     # Methods
     def __init__(self, data: dict):
         super(Token, self).__init__(data)
 
-        self._from = data['from']
+        # Attributes
+        self._from = data['from']  # type: str
         self._created_at = json2date(data['createdAt'])
-        self.tags = data['tags']
+        self.tags = data['tags']   # type: List[str]
 
     # Properties
     @property
@@ -33,8 +29,7 @@ class Token(SubDocument):
 
 class TokensHolder:
     # Attributes
-    _last_connexion: datetime = None
-    _tokens: List[Token]
+    _last_connexion: Optional[datetime] = None
 
     # Methods
     def _init_tokens(self, data: dict):
@@ -45,5 +40,5 @@ class TokensHolder:
 
     # Properties
     @property
-    def last_connexion(self) -> datetime:
+    def last_connexion(self) -> Optional[datetime]:
         return self._last_connexion

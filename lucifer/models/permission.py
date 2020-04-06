@@ -1,5 +1,4 @@
 import enum
-from typing import List
 
 from .document import SubDocument
 
@@ -18,24 +17,17 @@ class PLvl(enum.IntFlag):
 
 # Classes
 class Permission(SubDocument):
-    # Attributes
-    name: str
-    level: PLvl
-
     # Methods
     def __init__(self, data: dict):
         super(Permission, self).__init__(data)
 
-        self.name = data['name']
+        # Attributes
+        self.name = data['name']  # type: str
         self.level = PLvl(data['level'])
 
 
 class PermissionsHolder:
-    # Attributes
-    admin: bool
-    permissions: List[Permission]
-
     # Methods
     def _init_permissions(self, data: dict):
-        self.admin = data['admin']
+        self.admin = data['admin']  # type: bool
         self.permissions = [Permission(perm) for perm in data['permissions']]

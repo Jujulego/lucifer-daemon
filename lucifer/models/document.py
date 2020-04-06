@@ -1,11 +1,9 @@
 # Classes
 class SubDocument:
-    # Attributes
-    _id: str
-
     # Methods
     def __init__(self, data: dict):
-        self._id = data['_id']
+        # Attributes
+        self._id = data['_id']  # type: str
 
     def __repr__(self):
         return f'<{self.__class__.__qualname__}: {self._id}>'
@@ -26,13 +24,12 @@ class SubDocument:
 
 
 class Document(SubDocument):
-    # Attributes
-    _v: int
-
     # Methods
     def __init__(self, data: dict):
         super(Document, self).__init__(data)
-        self._v = data['__v']
+
+        # Attributes
+        self._v = data['__v']  # type: int
 
     def __eq__(self, other):
         if isinstance(other, Document):
