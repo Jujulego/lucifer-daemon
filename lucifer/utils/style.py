@@ -26,7 +26,7 @@ class EscapeCode:
         return f'\033[{codes}m'
 
     def __call__(self, txt: str):
-        return f'{self}{txt}{style.reset}'
+        return f'{self}{txt.replace(str(style.reset), f"{style.reset}{self}")}{style.reset}'
 
     def __add__(self, other):
         if isinstance(other, EscapeCode):
@@ -35,7 +35,7 @@ class EscapeCode:
         elif isinstance(other, str):
             return str(self) + other
 
-        return NotImplementedError
+        return NotImplemented
 
 
 class Style:

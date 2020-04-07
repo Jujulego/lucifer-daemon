@@ -1,3 +1,5 @@
+import pytest
+
 from lucifer.utils.style import style
 
 
@@ -48,10 +50,14 @@ def test_style_add():
     style.enabled = False
     assert (style.green + 'test') == 'test'
 
+    with pytest.raises(TypeError):
+        style.green + 5
+
 
 def test_style_call():
     style.enabled = True
     assert style.green('test') == '\033[32mtest\033[m'
+    assert style.green(f't{style.red("es")}t') == '\033[32mt\033[31mes\033[m\033[32mt\033[m'
 
     style.enabled = False
     assert style.green('test') == 'test'
