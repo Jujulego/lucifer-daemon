@@ -2,7 +2,8 @@ import aiohttp
 from typing import List, Optional
 from urllib.parse import urljoin
 
-from lucifer.base.session import BaseSession
+from .base.session import BaseSession
+from .utils.style import style
 
 
 # Class
@@ -22,9 +23,9 @@ class LuciferSession(BaseSession):
 
     def __repr__(self):
         if self.connected:
-            return f'<LuciferSession: {self.endpoint} (connected)>'
+            return style.blue(f'<LuciferSession: {self.endpoint} (connected)>')
 
-        return f'<LuciferSession: {self.endpoint}>'
+        return style.blue(f'<LuciferSession: {self.endpoint}>')
 
     def _url(self, path: str):
         return urljoin(self.endpoint, path)

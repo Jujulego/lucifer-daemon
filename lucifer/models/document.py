@@ -1,3 +1,6 @@
+from lucifer.utils.style import style
+
+
 # Classes
 class SubDocument:
     # Methods
@@ -6,7 +9,7 @@ class SubDocument:
         self._id = data['_id']  # type: str
 
     def __repr__(self):
-        return f'<{self.__class__.__qualname__}: {self._id}>'
+        return style.blue(f'<{self.__class__.__qualname__}: {self._id}>')
 
     def __eq__(self, other):
         if isinstance(other, SubDocument):

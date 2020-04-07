@@ -1,5 +1,7 @@
 from typing import Optional
 
+from lucifer.utils.style import style
+
 from .document import Document
 from .permission import PermissionsHolder
 from .token import TokensHolder
@@ -17,6 +19,9 @@ class Daemon(Document, PermissionsHolder, TokensHolder):
         self.name = data.get('name', None)  # type: Optional[str]
         self._user = data['user']           # type: str
         self._lrn = data['lrn']             # type: str
+
+    def __repr__(self):
+        return style.blue(f'<Daemon: {self.name or self.id}>')
 
     # Properties
     @property

@@ -1,3 +1,5 @@
+from lucifer.utils.style import style
+
 from .document import Document
 from .permission import PermissionsHolder
 from .token import TokensHolder
@@ -14,6 +16,9 @@ class User(Document, PermissionsHolder, TokensHolder):
         # Attributes
         self.email = data['email']  # type: str
         self._lrn = data['lrn']     # type: str
+
+    def __repr__(self):
+        return style.blue(f'<User: {self.email}>')
 
     # Properties
     @property
