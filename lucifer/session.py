@@ -2,21 +2,20 @@ import aiohttp
 from typing import List, Optional
 from urllib.parse import urljoin
 
-from .base.session import BaseSession
 from .utils.style import style
 
 
 # Class
-class LuciferSession(BaseSession):
+class LuciferSession:
     # Attributes
     _daemon: Optional[str] = None
     _token: Optional[str] = None
     _session: Optional[aiohttp.ClientSession] = None
 
     # Methods
-    def __init__(self, id: str, secret: str, *, auto_logout: bool = False, tags: Optional[List[str]] = None):
+    def __init__(self, daemon_id: str, secret: str, *, auto_logout: bool = True, tags: Optional[List[str]] = None):
         # Attributes
-        self._id = id
+        self._daemon_id = daemon_id
         self._secret = secret
         self._tags = tags or []  # type: List[str]
         self._auto_logout = auto_logout
@@ -70,7 +69,7 @@ class LuciferSession(BaseSession):
 
     async def login(self):
         data = await self.post('daemons/login', data={
-            'id': self._id,
+            'id': self._daemon_id,
             'secret': self._secret,
             'tags': self._tags
         })

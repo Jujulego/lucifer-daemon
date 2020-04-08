@@ -1,6 +1,6 @@
 import asyncio
 
-from lucifer.session import LuciferSession
+from lucifer.client import LuciferClient
 
 
 # Constants
@@ -10,9 +10,8 @@ DAEMON_SECRET = 'KuhhBrfZbe78GBCqRwOoTyqtSvZx5uPghnzJvE2fZh'
 
 # Main
 async def main():
-    async with LuciferSession(DAEMON_ID, DAEMON_SECRET, tags=['tests']) as session:
-        res = await session.get('version')
-        print(res)
+    async with LuciferClient(DAEMON_ID, DAEMON_SECRET, tags=['Tests']) as client:
+        print(await client.version)
 
 
 # Execution
