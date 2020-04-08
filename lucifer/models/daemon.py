@@ -7,13 +7,11 @@ from .permission import PermissionsHolder
 from .token import TokensHolder
 
 
-# Class
-class Daemon(Document, PermissionsHolder, TokensHolder):
+# Classes
+class SimpleDaemon(Document):
     # Methods
     def __init__(self, data: dict):
-        super(Daemon, self).__init__(data)
-        super(Daemon, self)._init_permissions(data)
-        super(Daemon, self)._init_tokens(data)
+        super(SimpleDaemon, self).__init__(data)
 
         # Attributes
         self.name = data.get('name', None)  # type: Optional[str]
@@ -21,9 +19,17 @@ class Daemon(Document, PermissionsHolder, TokensHolder):
         self._lrn = data['lrn']             # type: str
 
     def __repr__(self):
-        return style.blue(f'<Daemon: {self.name or self.id}>')
+        return style.blue(f'<{self.__class__.__qualname__}: {self.name or self.id}>')
 
     # Properties
     @property
     def lrn(self):
         return self._lrn
+
+
+class Daemon(SimpleDaemon, PermissionsHolder, TokensHolder):
+    # Methods
+    def __init__(self, data: dict):
+        super(Daemon, self).__init__(data)
+        super(Daemon, self)._init_permissions(data)
+        super(Daemon, self)._init_tokens(data)
