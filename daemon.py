@@ -24,7 +24,7 @@ async def main():
         await log_version(client)
 
         # Get daemon's data
-        daemons = await client.daemons.all()
+        daemons = await client.daemons.list()
         for daemon in daemons:
             print('-', daemon)
 
