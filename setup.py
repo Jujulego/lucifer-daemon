@@ -15,6 +15,7 @@ setup(
         "lucifer.api.permissions",
         "lucifer.api.tokens",
         "lucifer.api.users",
+        "lucifer.docker",
         "lucifer.utils"
     ],
     install_requires=requirements,
