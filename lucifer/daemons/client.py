@@ -1,14 +1,20 @@
 from typing import List, Optional, Union
 
 from lucifer.bases.client import BaseClient
+from lucifer.permissions.client import PermissionsMixin
 from lucifer.users.user import User
 
 from .daemon import SimpleDaemon, Daemon
 
 
 # Client
-class DaemonsClient(BaseClient):
+class DaemonsClient(BaseClient, PermissionsMixin[Daemon]):
     # Methods
+    def __init__(self, *args, **kwargs):
+        super(DaemonsClient, self).__init__(*args, **kwargs)
+
+        self._init_permissions(self._session, 'daemons', lambda data: Daemon(data))
+
     async def list(self) -> List[SimpleDaemon]:
         res = await self._session.get('daemons')
         return [SimpleDaemon(r) for r in res]

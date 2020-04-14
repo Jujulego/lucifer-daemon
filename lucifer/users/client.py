@@ -1,12 +1,18 @@
 from typing import List, Optional
 
 from lucifer.bases.client import BaseClient
+from lucifer.permissions.client import PermissionsMixin
 from lucifer.users.user import SimpleUser, User
 
 
 # Client
-class UsersClient(BaseClient):
+class UsersClient(BaseClient, PermissionsMixin[User]):
     # Methods
+    def __init__(self, *args, **kwargs):
+        super(UsersClient, self).__init__(*args, **kwargs)
+
+        self._init_permissions(self._session, 'users', lambda data: User(data))
+
     async def list(self) -> List[SimpleUser]:
         res = await self._session.get('users')
         return [SimpleUser(r) for r in res]
