@@ -1,6 +1,6 @@
 import asyncio
 
-from lucifer.client import LuciferClient
+from lucifer.api.client import LuciferClient
 
 
 # Constants

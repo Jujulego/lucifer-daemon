@@ -1,7 +1,7 @@
 from datetime import datetime
 import pytz
 
-from lucifer.utils.date import json2date
+from lucifer import json2date
 
 
 # Tests

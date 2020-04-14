@@ -10,8 +10,11 @@ setup(
     version="0.1.0",
     packages=[
         "lucifer",
-        "lucifer.base",
-        "lucifer.models",
+        "lucifer.api.base",
+        "lucifer.api.daemons",
+        "lucifer.api.permissions",
+        "lucifer.api.tokens",
+        "lucifer.api.users",
         "lucifer.utils"
     ],
     install_requires=requirements,

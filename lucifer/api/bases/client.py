@@ -1,6 +1,6 @@
 from abc import ABC
 
-from lucifer.session import LuciferSession
+from lucifer.api.session import LuciferSession
 
 
 class BaseClient(ABC):

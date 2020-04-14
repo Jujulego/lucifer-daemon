@@ -3,7 +3,7 @@ from typing import List, Optional
 
 from lucifer.utils.date import json2date
 
-from lucifer.bases.document import SubDocument
+from lucifer.api.bases.document import SubDocument
 
 
 # Classes

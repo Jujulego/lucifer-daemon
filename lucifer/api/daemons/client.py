@@ -1,8 +1,8 @@
 from typing import List, Optional, Union
 
-from lucifer.bases.client import BaseClient
-from lucifer.permissions.client import PermissionsMixin
-from lucifer.users.user import User
+from lucifer.api.bases.client import BaseClient
+from lucifer.api.permissions.client import PermissionsMixin
+from lucifer.api.users.user import User
 
 from .daemon import SimpleDaemon, Daemon
 

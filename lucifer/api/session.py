@@ -2,7 +2,7 @@ import aiohttp
 from typing import List, Optional
 from urllib.parse import urljoin
 
-from .utils.style import style
+from lucifer.utils.style import style
 
 
 # Class

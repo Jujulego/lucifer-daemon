@@ -1,8 +1,8 @@
 from lucifer.utils.style import style
 
-from lucifer.bases.document import Document
-from lucifer.permissions.permission import PermissionsHolder
-from lucifer.tokens.token import TokensHolder
+from lucifer.api.bases.document import Document
+from lucifer.api.permissions.permission import PermissionsHolder
+from lucifer.api.tokens.token import TokensHolder
 
 
 # Classes

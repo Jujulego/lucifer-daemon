@@ -1,6 +1,6 @@
 import enum
 
-from lucifer.bases.document import SubDocument
+from lucifer.api.bases.document import SubDocument
 
 
 # Enumerations

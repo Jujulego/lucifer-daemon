@@ -1,6 +1,6 @@
 from typing import Callable, Generic, Optional, TypeVar
 
-from lucifer.session import LuciferSession
+from lucifer.api.session import LuciferSession
 
 from .permission import PermissionsHolder, PLvl
 
